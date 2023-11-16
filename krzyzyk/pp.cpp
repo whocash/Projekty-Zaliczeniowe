@@ -30,7 +30,7 @@ public:
         std::cout << std::endl;
     }
 
-    // Metoda do wykonania ruchu gracza
+    
     bool makeMove(int row, int col, Player player) {
         if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == Player::NONE) {
             board[row][col] = player;
@@ -39,9 +39,9 @@ public:
         return false;
     }
 
-    // Metoda do sprawdzania, czy gra zakończyła się
+    
     bool isGameOver() {
-        // Sprawdzanie wierszy, kolumn i przekątnych
+       
         for (int i = 0; i < 3; i++) {
             if (board[i][0] != Player::NONE && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
                 return true;
@@ -108,7 +108,7 @@ int main() {
             if (game.makeMove(row, col, currentPlayer)) {
                 if (game.isGameOver()) {
                     game.displayBoard();
-                    std::cout << "Koniec gry. Remis!\n";
+                    std::cout << "Koniec gry.\n";
                     break;
                 }
                 currentPlayer = (currentPlayer == TicTacToe::Player::X) ? TicTacToe::Player::O : TicTacToe::Player::X;
@@ -116,12 +116,12 @@ int main() {
                 std::cout << "Nieprawidłowy ruch. Spróbuj jeszcze raz.\n";
             }
         }
-        else { // Ruch komputera (losowy wybór wolnego miejsca)
+        else { 
             std::cout << "Ruch komputera (gracz O)...\n";
             computerMove(game, TicTacToe::Player::O);
             if (game.isGameOver()) {
                 game.displayBoard();
-                std::cout << "Koniec gry. Remis!\n";
+                std::cout << "Koniec gry.\n";
                 break;
             }
             currentPlayer = TicTacToe::Player::X;
